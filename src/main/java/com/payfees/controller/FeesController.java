@@ -4,10 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.payfees.entity.Fees;
 import com.payfees.entity.PaymentAuthRequest;
 import com.payfees.service.FeesService;
@@ -30,4 +31,9 @@ public class FeesController {
 	public ResponseEntity<Fees> authenticateUpi(@RequestBody PaymentAuthRequest paymentAuthRequest) {
 		return feesService.feesStatus(paymentAuthRequest);
 	}
+	@DeleteMapping("/delete/{email}")
+    public ResponseEntity<Fees> deleteFeesById(@PathVariable String email){
+    	return feesService.deleteFeesById(email);
+    }
+	
 }

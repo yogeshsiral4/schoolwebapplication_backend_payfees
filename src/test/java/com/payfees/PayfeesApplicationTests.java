@@ -56,5 +56,16 @@ class PayfeesApplicationTests {
 		
 	}
 	
+//Test for delete fees details
+	@Test
+	@Order(3)
+	void DeleteFeesTest(){
+		given().header("Content-type","application/json").contentType(ContentType.JSON).accept(ContentType.JSON)
+		   .when()
+		   .delete("http://localhost:9195/fees/delete/rohangupta@gmail.com")
+		   .then()
+		   .assertThat().statusCode(200);
+	}
+	
 
 }

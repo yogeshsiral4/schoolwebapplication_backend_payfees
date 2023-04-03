@@ -41,4 +41,14 @@ public class FeesService {
 			return new ResponseEntity<Fees>(HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	public ResponseEntity<Fees> deleteFeesById(String email){
+		if(feesRepository.existsById(email)) {
+			feesRepository.deleteById(email);
+			return new ResponseEntity<Fees>(HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<Fees>(HttpStatus.NOT_FOUND);
+		}
+	}
 }
